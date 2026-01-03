@@ -33,13 +33,17 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-wide">
+          {/* Main Headline - Name */}
+          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-wide neon-text-cyan">
+            SANJAY GUMMADI
+          </h1>
+
+          {/* Secondary Heading - Role */}
+          <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold mb-6 tracking-wide">
             <span className="text-foreground">UI/UX Designer</span>
             <span className="text-primary mx-3">&</span>
-            <br className="md:hidden" />
             <span className="text-foreground">React Front-End Developer</span>
-          </h1>
+          </h2>
 
           {/* Sub-text */}
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
