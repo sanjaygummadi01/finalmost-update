@@ -41,6 +41,13 @@ const HeroSection = () => {
               background: 'linear-gradient(to right, rgba(5,11,14,0.95) 0%, rgba(5,11,14,0.8) 25%, rgba(5,11,14,0.45) 45%, rgba(5,11,14,0.1) 60%, transparent 75%)',
             }}
           />
+          {/* Right half shadow - darkens right side of face */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to left, rgba(5,11,14,0.85) 0%, rgba(5,11,14,0.6) 25%, rgba(5,11,14,0.3) 45%, transparent 65%)',
+            }}
+          />
           {/* Additional vertical shadow on face center-left */}
           <div
             className="absolute inset-0"
