@@ -1,6 +1,9 @@
 import heroPortrait from '@/assets/hero-portrait.png';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const HeroSection = () => {
+  const { ref, isVisible } = useScrollReveal(0.1);
+
   return (
     <section
       id="home"
@@ -18,41 +21,36 @@ const HeroSection = () => {
         <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-neon-teal/5 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div ref={ref} className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Portrait Image */}
-          <div className="mb-8 animate-float">
+          <div className={`mb-8 animate-float scroll-reveal-scale ${isVisible ? 'revealed' : ''}`}>
             <div className="relative">
               <img
                 src={heroPortrait}
                 alt="Sanjay - UI/UX Designer & React Developer"
                 className="w-40 h-40 md:w-52 md:h-52 object-cover neon-rim"
               />
-              {/* Outer Glow Ring */}
               <div className="absolute inset-0 rounded-full bg-primary/10 blur-xl scale-125" />
             </div>
           </div>
 
-          {/* Main Headline - Name */}
-          <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-wide neon-text-cyan">
+          <h1 className={`font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-wide neon-text-cyan scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
             SANJAY GUMMADI
           </h1>
 
-          {/* Secondary Heading - Role */}
-          <h2 className="font-heading text-xl md:text-2xl lg:text-3xl font-semibold mb-6 tracking-wide">
+          <h2 className={`font-heading text-xl md:text-2xl lg:text-3xl font-semibold mb-6 tracking-wide scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.4s' }}>
             <span className="text-foreground">UI/UX Designer</span>
             <span className="text-primary mx-3">&</span>
             <span className="text-foreground">React Front-End Developer</span>
           </h2>
 
-          {/* Sub-text */}
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+          <p className={`text-muted-foreground text-lg md:text-xl max-w-2xl mb-10 leading-relaxed scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.6s' }}>
             Crafting pixel-perfect interfaces with intuitive user experiences. 
             Bringing designs to life through clean, efficient React code.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className={`flex flex-col sm:flex-row gap-4 scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.8s' }}>
             <a href="#uiux" className="neon-btn-primary">
               View My Work
             </a>
@@ -63,7 +61,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Bottom Gradient Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );

@@ -1,4 +1,5 @@
 import CertificateCard from './CertificateCard';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 import certGoogleUx from '@/assets/cert-google-ux.png';
 import certIxdf from '@/assets/cert-ixdf.png';
@@ -62,43 +63,32 @@ const devCertifications = [
 ];
 
 const CertificationsSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="certifications" className="py-24 relative bg-glow-radial">
-      <div className="container mx-auto px-6">
-        {/* Section Title */}
-        <h2 className="section-title text-center mb-16">Certifications</h2>
+      <div ref={ref} className="container mx-auto px-6">
+        <h2 className={`section-title text-center mb-16 scroll-reveal ${isVisible ? 'revealed' : ''}`}>Certifications</h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Design Certifications */}
-          <div>
-            <h3 className="font-heading text-xl font-semibold text-primary mb-6 text-center">
-              Design Certifications
-            </h3>
+          <div className={`scroll-reveal-left ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
+            <h3 className="font-heading text-xl font-semibold text-primary mb-6 text-center">Design Certifications</h3>
             <div className="grid gap-4">
               {designCertifications.map((cert, index) => (
-                <CertificateCard
-                  key={cert.name}
-                  {...cert}
-                  variant="design"
-                  delay={index * 0.15}
-                />
+                <div key={cert.name} className={`scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: `${0.3 + index * 0.15}s` }}>
+                  <CertificateCard {...cert} variant="design" delay={0} />
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Developer Certifications */}
-          <div>
-            <h3 className="font-heading text-xl font-semibold text-accent mb-6 text-center">
-              Developer Certifications
-            </h3>
+          <div className={`scroll-reveal-right ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
+            <h3 className="font-heading text-xl font-semibold text-accent mb-6 text-center">Developer Certifications</h3>
             <div className="grid gap-4">
               {devCertifications.map((cert, index) => (
-                <CertificateCard
-                  key={cert.name}
-                  {...cert}
-                  variant="dev"
-                  delay={index * 0.15}
-                />
+                <div key={cert.name} className={`scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: `${0.3 + index * 0.15}s` }}>
+                  <CertificateCard {...cert} variant="dev" delay={0} />
+                </div>
               ))}
             </div>
           </div>

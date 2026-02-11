@@ -1,4 +1,5 @@
 import ProjectCard from './ProjectCard';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 import project1 from '@/assets/uiux-project-1.png';
 import project2 from '@/assets/uiux-project-2.png';
 import project3 from '@/assets/uiux-project-3.png';
@@ -28,22 +29,22 @@ const uiuxProjects = [
 ];
 
 const UIUXSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="uiux" className="py-24 relative">
-      <div className="container mx-auto px-6">
-        {/* Section Title */}
-        <h2 className="section-title text-center mb-4">UI/UX Case Studies</h2>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16">
+      <div ref={ref} className="container mx-auto px-6">
+        <h2 className={`section-title text-center mb-4 scroll-reveal ${isVisible ? 'revealed' : ''}`}>UI/UX Case Studies</h2>
+        <p className={`text-muted-foreground text-center max-w-2xl mx-auto mb-16 scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.15s' }}>
           Explore my design process and see how user-centered thinking transforms complex problems into elegant solutions.
         </p>
 
-        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {uiuxProjects.map((project, index) => (
             <div
               key={project.title}
-              className="opacity-0 animate-fade-in"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              className={`scroll-reveal ${isVisible ? 'revealed' : ''}`}
+              style={{ transitionDelay: `${0.3 + index * 0.15}s` }}
             >
               <ProjectCard {...project} />
             </div>
