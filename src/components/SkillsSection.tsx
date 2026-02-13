@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
-
 const designSkills = [
   { name: 'Figma', icon: '◈' },
   { name: 'UX Research', icon: '◇' },
@@ -13,6 +11,7 @@ const designSkills = [
 
 const devSkills = [
   { name: 'React', icon: '⚛' },
+  { name: 'TypeScript', icon: '⟨⟩' },
   { name: 'JavaScript', icon: '◈' },
   { name: 'HTML5', icon: '◇' },
   { name: 'CSS3', icon: '▣' },
@@ -22,52 +21,55 @@ const devSkills = [
 ];
 
 const SkillsSection = () => {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="skills" className="py-24 relative">
-      <div ref={ref} className="container mx-auto px-6">
-        <h2 className={`section-title text-center mb-16 scroll-reveal ${isVisible ? 'revealed' : ''}`}>Skills & Expertise</h2>
+      <div className="container mx-auto px-6">
+        {/* Section Title */}
+        <h2 className="section-title text-center mb-16">Skills & Expertise</h2>
+
         <div className="grid lg:grid-cols-2 gap-12">
-          <div className={`glass-card-glow p-8 scroll-reveal-left ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
+          {/* Design Skills */}
+          <div className="glass-card-glow p-8">
             <h3 className="font-heading text-xl font-semibold text-primary mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary">◈</span>
+              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+                ◈
+              </span>
               Design Skills
             </h3>
             <div className="flex flex-wrap gap-3">
               {designSkills.map((skill, index) => (
-                <div key={skill.name} className={`skill-badge scroll-reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: `${0.4 + index * 0.08}s` }}>
+                <div
+                  key={skill.name}
+                  className="skill-badge opacity-0 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <span className="text-primary">{skill.icon}</span>
                   {skill.name}
                 </div>
               ))}
             </div>
           </div>
-          <div className={`glass-card-glow p-8 scroll-reveal-right ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
+
+          {/* Developer Skills */}
+          <div className="glass-card-glow p-8">
             <h3 className="font-heading text-xl font-semibold text-accent mb-6 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">⟨⟩</span>
+              <span className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
+                ⟨⟩
+              </span>
               Developer Skills
             </h3>
             <div className="flex flex-wrap gap-3">
               {devSkills.map((skill, index) => (
-                <div key={skill.name} className={`skill-badge scroll-reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: `${0.4 + index * 0.08}s`, borderColor: 'hsl(280 100% 60% / 0.3)', color: 'hsl(280 100% 60%)', boxShadow: '0 0 10px hsl(280 100% 60% / 0.1)' }}>
+                <div
+                  key={skill.name}
+                  className="skill-badge opacity-0 animate-fade-in"
+                  style={{ 
+                    animationDelay: `${index * 0.1}s`,
+                    borderColor: 'hsl(280 100% 60% / 0.3)',
+                    color: 'hsl(280 100% 60%)',
+                    boxShadow: '0 0 10px hsl(280 100% 60% / 0.1)'
+                  }}
+                >
                   <span className="text-accent">{skill.icon}</span>
                   {skill.name}
                 </div>
