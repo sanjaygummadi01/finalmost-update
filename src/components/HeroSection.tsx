@@ -37,8 +37,9 @@ const HeroSection = () => {
               <img
                 src={heroPortrait}
                 alt="Sanjay - UI/UX Designer & React Developer"
-                className="relative w-48 h-48 md:w-60 md:h-60 rounded-full object-cover object-top"
+                className="relative w-48 h-48 md:w-60 md:h-60 rounded-full object-cover"
                 style={{
+                  objectPosition: '50% 30%',
                   boxShadow: '0 0 40px hsl(180 100% 50% / 0.3), 0 0 80px hsl(280 100% 60% / 0.2)',
                 }}
               />
