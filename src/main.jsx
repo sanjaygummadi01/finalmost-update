@@ -4,7 +4,7 @@ import App from "./App";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
-  <HashRouter>
+  <HashRouter basename="/Portfolio">
     <App />
   </HashRouter>
 );
